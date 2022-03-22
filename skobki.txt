@@ -1,7 +1,0 @@
-{ person
-{ ovch }
-{ cat
-{ me }
-{ poltorashka }
-}
-}
