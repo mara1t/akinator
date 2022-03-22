@@ -11,49 +11,17 @@ HeadTree::~HeadTree()
     size = 0;
 }
 
-/*
-Node *HeadTree::Find(elem_t cur_val)
-{
-    Node *node = root;
 
-    while (node != NULL) {
-        if (MyCmp(node->data, cur_val) == 0) 
-            return node;
-        
-        if (MyCmp(node->data, cur_val) == -1) 
-            node = node->right;
-        
-        if (MyCmp(node->data, cur_val) == 1) 
-            node = node->left;
-    }
-
-    return NULL;
-}
-
-int HeadTree::MyCmp(elem_t value1, elem_t value2)
-{
-    if (TreeMode == INTMODE) {
-        if (value1 > value2)    return 1;
-        if (value1 < value2)    return -1;
-        if (value1 == value2)   return 0;
-    }
-    else if (TreeMode == STRMODE) {
-        
-    }
-    return 0;
-}
-*/
 
 /*
 /
 /
 /
 */
-int HeadTree::MakeAkinator()
+int MakeAkinator(Node *root)
 {
 
     while (1) {
-        char *tmp_ans = new char [4];
         char *play = new char[4];
         
         printf("do you want to play?\n");
@@ -74,6 +42,7 @@ int HeadTree::MakeAkinator()
 
         while (node->left != NULL && node->right != NULL) {
             
+            char *tmp_ans = new char [4];
             printf("is it %s?\n", node->data);
             
             scanf("%s", tmp_ans);
@@ -86,26 +55,34 @@ int HeadTree::MakeAkinator()
                 
                 node = node->right;
             }
+            else {
+                printf("here err\n");
+            }
+            delete[] tmp_ans;
         }
 
         if (node->left == NULL && node->right == NULL) {
         
+            char *tmp_ans = new char [4];
             printf("is it %s?\n", node->data);
 
             scanf("%s", tmp_ans);
             
             if (strcmp(tmp_ans, "yes") == 0) {
                 printf("GOOD GAME!!!\n");
+                delete[] tmp_ans;
+                delete[] play;
                 return 0;    
             }
             else if (strcmp(tmp_ans, "no") == 0) {
                 Insert(node);
             }
+            delete[] tmp_ans;
         }
         else {
             printf("error\n");
         }
-        delete[] tmp_ans;
+        
         delete[] play;
     }
 
@@ -122,15 +99,21 @@ int Insert(Node *tmp_root)
     printf("Who is it?\n");
 
     tmp_root->left = new Node;
-    tmp_root->left->data = new char [20];
+    (tmp_root->left)->data = new char [20];
     tmp_root->right = new Node;
-    tmp_root->right->data = new char [20];
-    scanf("%s", tmp_root->left->data);
+    (tmp_root->right)->data = new char [20];
+    scanf("%s", (tmp_root->left)->data);
 
-    strcpy(tmp_root->right->data, tmp_root->data);
+    strcpy((tmp_root->right)->data, tmp_root->data);
 
     printf("What's the difference?\n");
     scanf("%s", tmp_root->data);
+
+    tmp_root->left->left = NULL;
+    tmp_root->left->right = NULL;
+    
+    tmp_root->right->left = NULL;
+    tmp_root->right->right = NULL;
 
     return 0;
 }
@@ -150,7 +133,15 @@ int PrintSkobki(Node *node, FILE *skobki)
         PrintSkobki(node->right, skobki);
         fprintf(skobki, "}\n");
     }
+    else if (node->left != NULL) {
+        
+        printf("left:node->data=%s\nnode->dataleft=%s\n", node->data, node->left->data);
+    }
+    else if (node->right != NULL) {
+        printf("right:node->data=%s\nnode->dataright=%s\n", node->data, node->right->data);
+    }
     else {
+        fclose(skobki);
         printf("error in tree in print\n");
     }
     

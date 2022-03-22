@@ -2,21 +2,21 @@
 
 int main() 
 {
-    HeadTree MyHeadTree(2);
+    //HeadTree MyHeadTree(2);
 
-    MyHeadTree.root = new Node;
+    Node *root = new Node;
 
-    MakeTreeFromFile(MyHeadTree.root);
+    MakeTreeFromFile(root);
 
+    
+    
+    MakeAkinator(root);
+    
     FILE *skobkifile = fopen("skobkiinput.txt", "w");
     
-    MyHeadTree.MakeAkinator();
-    
-    PrintDot(MyHeadTree.root);
-    
-    PrintSkobki(MyHeadTree.root, skobkifile);
-
+    PrintSkobki(root, skobkifile);
     fclose(skobkifile);
+    PrintDot(root);
     
     return 0;
 }

@@ -15,7 +15,7 @@ enum {
 const int TreeMode = INTMODE;
 
 struct Node {
-    elem_t data;
+    char *data;
     Node *right;
     Node *left;
 };
@@ -24,16 +24,15 @@ class HeadTree {
     int size;
 
     public:
-        Node *root;
         Node *Find(elem_t);
         //int MyCmp(elem_t value1, elem_t value2);
-        int MakeAkinator();
+        
         
         
         HeadTree(int size_);
         ~HeadTree();
 };
-
+int MakeAkinator(Node *);
 int Insert(Node *);
 int PrintSkobki(Node*, FILE*);
 int PrintDot(Node*);
