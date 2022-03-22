@@ -8,8 +8,6 @@ int main()
 
     MakeTreeFromFile(root);
 
-    
-    
     MakeAkinator(root);
     
     FILE *skobkifile = fopen("skobkiinput.txt", "w");

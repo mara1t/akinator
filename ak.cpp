@@ -23,17 +23,22 @@ int MakeAkinator(Node *root)
 
     while (1) {
         char *play = new char[4];
-        
-        printf("do you want to play?\n");
-        scanf("%s", play);
+        int next_step = 0;
 
-        if (strcmp(play, "no") == 0) {
-            printf("game stopped\n");
-            return 0;
-        }
-        else if (strcmp(play, "yes") != 0) {
-            printf("error in playing\n");
-            return 0;
+        printf("do you want to play?\n");
+
+        while (next_step != 1) {
+            scanf("%s", play);
+            if (strcmp(play, "no") == 0) {
+                printf("game stopped\n");
+                return 0;
+            }
+            else if (strcmp(play, "yes") != 0) {
+                printf("you should write yes/no\n");
+            }
+            else {
+                next_step = 1;
+            }
         }
 
         assert(root != NULL);
@@ -106,7 +111,7 @@ int Insert(Node *tmp_root)
 
     strcpy((tmp_root->right)->data, tmp_root->data);
 
-    printf("What's the difference?\n");
+    printf("What's the difference from another?\n");
     scanf("%s", tmp_root->data);
 
     tmp_root->left->left = NULL;
@@ -230,11 +235,18 @@ int MakeOneScan(Node* node, FILE *skobki)
 
         tmp_symb = 'A';
 
-        while (tmp_symb != '{' && tmp_symb != '}')
+        while (tmp_symb != '{')
             fscanf(skobki, "%c", &tmp_symb);
 
         node->right = new Node;
+        
+        tmp_symb = 'A';
+        
+        //while (tmp_symb != '{')
+        //    fscanf(skobki, "%c", &tmp_symb);
+
         MakeOneScan(node->right, skobki);
+        
     }
     else if (tmp_symb == '}') {
         return 0;
