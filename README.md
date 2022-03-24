@@ -4,7 +4,7 @@
     
 **Launch**:  
     &emsp; git clone git@github.com:mara1t/akinator.git  
-    &emsp; cd akinator
+    &emsp; cd akinator  
     &emsp; make launch  
     &emsp; dot -Tpng graph.txt -o pict.png  
       
