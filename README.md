@@ -1,4 +1,4 @@
-# akinator
+# akinator on binary tree  
 
 **ENTRY**:
     
