@@ -77,95 +77,58 @@ int FindElem(Node *root, char *value)
 int MakeAkinator(Node *root)
 {
 
-    /*while (1) {
-        char *play = new char[4];
-        int next_step = 0;
-<<<<<<< HEAD
 
-        //printf("do you want to play?\n");
-=======
-
-        printf("do you want to play?\n");
-
-        while (next_step != 1) {
-            scanf("%s", play);
-            if (strcmp(play, "no") == 0) {
-                printf("game stopped\n");
-                return 0;
-            }
-            else if (strcmp(play, "yes") != 0) {
-                printf("you should write yes/no\n");
-            }
-            else {
-                next_step = 1;
-            }
-        }
->>>>>>> a4b1437ae57fab4ebe1b38fb6b0eb7ea778ff4d0
-
-        while (next_step != 1) {
-            scanf("%s", play);
-            if (strcmp(play, "no") == 0) {
-                printf("game stopped\n");
-                return 0;
-            }
-            else if (strcmp(play, "yes") != 0) {
-                printf("you should write yes/no\n");
-            }
-            else {
-                next_step = 1;
-            }
-        }
-*/
-        assert(root != NULL);
-        Node *node = root;
+    assert(root != NULL);
+    Node *node = root;
         
 
-        while (node->left != NULL && node->right != NULL) {
-            
-            char *tmp_ans = new char [4];
-            printf("is it %s?\n", node->data);
-            
-            scanf("%s", tmp_ans);
-
-            if (strcmp(tmp_ans, "yes") == 0) {
-                
-                node = node->left;
-            }
-            else if (strcmp(tmp_ans, "no") == 0) {
-                
-                node = node->right;
-            }
-            else {
-                printf("here err\n");
-            }
-            delete[] tmp_ans;
-        }
-
-        if (node->left == NULL && node->right == NULL) {
+    while (node->left != NULL && node->right != NULL) {
         
-            char *tmp_ans = new char [4];
-            printf("is it %s?\n", node->data);
+        char *tmp_ans = new char [4];
+        printf("is it %s?\n", node->data);
+        
+        scanf("%s", tmp_ans);
 
-            scanf("%s", tmp_ans);
+        if (strcmp(tmp_ans, "yes") == 0) {
             
-            if (strcmp(tmp_ans, "yes") == 0) {
-                printf("GOOD GAME!!!\n");
-                delete[] tmp_ans;
-                //delete[] play;
-                return 0;    
-            }
-            else if (strcmp(tmp_ans, "no") == 0) {
-                Insert(node);
-            }
-            delete[] tmp_ans;
+            node = node->left;
+        }
+        else if (strcmp(tmp_ans, "no") == 0) {
+            
+            node = node->right;
         }
         else {
-            printf("error\n");
+            printf("*write yes/no\n");
         }
-        
-        //delete[] play;
-    //}
+        delete[] tmp_ans;
+    }
 
+    if (node->left == NULL && node->right == NULL) {
+    
+        char *tmp_ans = new char [4];
+        printf("is it %s?\n", node->data);
+
+        scanf("%s", tmp_ans);
+        
+        if (strcmp(tmp_ans, "yes") == 0) {
+            printf("GOOD GAME!!!\n");
+            delete[] tmp_ans;
+            //delete[] play;
+            return 0;    
+        }
+        else if (strcmp(tmp_ans, "no") == 0) {
+            Insert(node);
+        }
+        else {
+            printf("*write yes/no\n");
+        }
+        delete[] tmp_ans;
+    }
+    else {
+        printf("error\n");
+    }
+        
+      
     return 0;
 }
 
@@ -308,12 +271,6 @@ int MakeOneScan(Node* node, FILE *skobki)
         node->right = new Node;
         
         tmp_symb = 'A';
-<<<<<<< HEAD
-=======
-        
-        //while (tmp_symb != '{')
-        //    fscanf(skobki, "%c", &tmp_symb);
->>>>>>> a4b1437ae57fab4ebe1b38fb6b0eb7ea778ff4d0
 
         MakeOneScan(node->right, skobki);
         
