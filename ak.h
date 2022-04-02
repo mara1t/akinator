@@ -8,8 +8,8 @@
 typedef char* elem_t;
 
 enum {
-    STRMODE = 0,
-    INTMODE = 1
+    STRMODE,
+    INTMODE
 };
 
 const int TreeMode = INTMODE;
@@ -20,18 +20,6 @@ struct Node {
     Node *left;
 };
 
-class HeadTree {
-    int size;
-
-    public:
-        Node *Find(elem_t);
-        //int MyCmp(elem_t value1, elem_t value2);
-        
-        
-        
-        HeadTree(int size_);
-        ~HeadTree();
-};
 int MakeAkinator(Node *);
 int Insert(Node *);
 int PrintSkobki(Node*, FILE*);
@@ -39,3 +27,6 @@ int PrintDot(Node*);
 int PrintStruct(FILE*, Node*, int*);
 int MakeTreeFromFile(Node*);
 int MakeOneScan(Node*, FILE*);
+int Chararcteristic(Node *root, char *def_str);
+int FindElem(Node *root, char *value);
+int MenuToPlay(Node *root);

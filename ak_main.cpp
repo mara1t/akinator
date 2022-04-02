@@ -2,13 +2,17 @@
 
 int main() 
 {
-    //HeadTree MyHeadTree(2);
-
     Node *root = new Node;
 
     MakeTreeFromFile(root);
 
-    MakeAkinator(root);
+    //char tmp_str[] = "him";
+
+    //Chararcteristic(root, tmp_str);
+
+
+
+    MenuToPlay(root);
     
     FILE *skobkifile = fopen("skobkiinput.txt", "w");
     

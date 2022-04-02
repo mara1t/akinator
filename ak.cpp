@@ -1,31 +1,87 @@
 #include "ak.h"
 
-
-HeadTree::HeadTree(int size_)
+int MenuToPlay(Node *root)
 {
-    size = 0;
+    while (1) {
+        printf("------------\nTo play write-1\nto show characteristics write-2\nto exit write-0\n------------\n");
+
+        char menu_str[20];
+
+        scanf("%s", menu_str);
+
+        if (strcmp(menu_str, "1") == 0) {
+            MakeAkinator(root);
+        }
+        else if (strcmp(menu_str, "2") == 0) {
+            printf("Write the word to know more about it\n");
+
+            char str_to_find[20];
+            scanf("%s", str_to_find);
+
+            Chararcteristic(root, str_to_find);
+        }
+        else if (strcmp(menu_str, "0") == 0) {
+            printf("game stopped\n");
+            break;
+        }
+        else {
+            printf("error in menu\n");
+            return -1;
+        }
+
+    }
+
+    return 0;
 }
 
-HeadTree::~HeadTree()
+
+int Chararcteristic(Node *root, char *def_str)
 {
-    size = 0;
+    char *tmp_str = new char[20];
+    strcpy(tmp_str, def_str);
+
+    
+    if (FindElem(root->left, tmp_str) == 0) {
+        printf("%s\n", root->data);
+    }
+    else if (FindElem(root->right, tmp_str) == 0) {
+        printf("not %s\n", root->data);
+    }
+    return 0;
 }
 
+int FindElem(Node *root, char *value) 
+{
+    if (root == NULL) {
+        return -1;
+    }
+    else if (strcmp(value, root->data) == 0) {
+        return 0;
+    }
+    
+    if (FindElem(root->left, value) == 0) {
+        printf("%s, ", root->data);
+        return 0;
+    }
+    else if (FindElem(root->right, value) == 0) {
+        printf("not %s, ", root->data);
+        return 0;
+    }
+    else {
+        return -1;
+    }
 
+    return -1;
+}
 
-/*
-/
-/
-/
-*/
 int MakeAkinator(Node *root)
 {
 
-    while (1) {
+    /*while (1) {
         char *play = new char[4];
         int next_step = 0;
 
-        printf("do you want to play?\n");
+        //printf("do you want to play?\n");
 
         while (next_step != 1) {
             scanf("%s", play);
@@ -40,7 +96,7 @@ int MakeAkinator(Node *root)
                 next_step = 1;
             }
         }
-
+*/
         assert(root != NULL);
         Node *node = root;
         
@@ -76,7 +132,7 @@ int MakeAkinator(Node *root)
             if (strcmp(tmp_ans, "yes") == 0) {
                 printf("GOOD GAME!!!\n");
                 delete[] tmp_ans;
-                delete[] play;
+                //delete[] play;
                 return 0;    
             }
             else if (strcmp(tmp_ans, "no") == 0) {
@@ -88,19 +144,14 @@ int MakeAkinator(Node *root)
             printf("error\n");
         }
         
-        delete[] play;
-    }
-
-    
+        //delete[] play;
+    //}
 
     return 0;
 }
 
 int Insert(Node *tmp_root)
 {
-    //char *tmp_ask = new char [20];
-    //char *new_elem = new char [20];
-
     printf("Who is it?\n");
 
     tmp_root->left = new Node;
@@ -122,8 +173,6 @@ int Insert(Node *tmp_root)
 
     return 0;
 }
-
-
 
 int PrintSkobki(Node *node, FILE *skobki) 
 {
@@ -157,23 +206,22 @@ int PrintSkobki(Node *node, FILE *skobki)
 int PrintDot(Node *root)
 {
     assert(root != NULL);
+
     FILE *graph = fopen("graph.txt", "w");
 
     int global_counter = 0;
 
     fprintf(graph, "digraph G{\n");
-
     PrintStruct(graph, root, &global_counter);
-    
     fprintf(graph, "}");
 
     fclose(graph);
+
     return 0;
 }
 
 int PrintStruct(FILE *graph, Node *node, int *global_counter)
 {
-    
     if (node == NULL)
         return 0;
     
@@ -241,9 +289,6 @@ int MakeOneScan(Node* node, FILE *skobki)
         node->right = new Node;
         
         tmp_symb = 'A';
-        
-        //while (tmp_symb != '{')
-        //    fscanf(skobki, "%c", &tmp_symb);
 
         MakeOneScan(node->right, skobki);
         

@@ -1,13 +1,10 @@
 { person
 { tall
 { me }
-{ prog
-{ ded }
 { ovch }
 }
-}
 { cat
-{ me }
+{ him }
 { poltorashka }
 }
 }
