@@ -1,7 +1,10 @@
 { person
-{ ovch }
-{ cat
+{ tall
 { me }
+{ ovch }
+}
+{ cat
+{ him }
 { poltorashka }
 }
 }

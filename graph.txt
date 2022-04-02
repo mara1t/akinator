@@ -5,15 +5,11 @@ digraph G{
 	struct1->struct2[label="yes"];
 	struct2 [shape=record,label="{<f0>poltorashka | {<f1> right | <f2> left} }" ];
 	struct1->struct3[label="no"];
-	struct3 [shape=record,label="{<f0>me | {<f1> right | <f2> left} }" ];
+	struct3 [shape=record,label="{<f0>him | {<f1> right | <f2> left} }" ];
 	struct0->struct4[label="no"];
 	struct4 [shape=record,label="{<f0>tall | {<f1> right | <f2> left} }" ];
 	struct4->struct5[label="yes"];
-	struct5 [shape=record,label="{<f0>prog | {<f1> right | <f2> left} }" ];
-	struct5->struct6[label="yes"];
-	struct6 [shape=record,label="{<f0>ovch | {<f1> right | <f2> left} }" ];
-	struct5->struct7[label="no"];
-	struct7 [shape=record,label="{<f0>ded | {<f1> right | <f2> left} }" ];
-	struct4->struct8[label="no"];
-	struct8 [shape=record,label="{<f0>me | {<f1> right | <f2> left} }" ];
+	struct5 [shape=record,label="{<f0>ovch | {<f1> right | <f2> left} }" ];
+	struct4->struct6[label="no"];
+	struct6 [shape=record,label="{<f0>me | {<f1> right | <f2> left} }" ];
 }
