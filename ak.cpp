@@ -80,8 +80,27 @@ int MakeAkinator(Node *root)
     /*while (1) {
         char *play = new char[4];
         int next_step = 0;
+<<<<<<< HEAD
 
         //printf("do you want to play?\n");
+=======
+
+        printf("do you want to play?\n");
+
+        while (next_step != 1) {
+            scanf("%s", play);
+            if (strcmp(play, "no") == 0) {
+                printf("game stopped\n");
+                return 0;
+            }
+            else if (strcmp(play, "yes") != 0) {
+                printf("you should write yes/no\n");
+            }
+            else {
+                next_step = 1;
+            }
+        }
+>>>>>>> a4b1437ae57fab4ebe1b38fb6b0eb7ea778ff4d0
 
         while (next_step != 1) {
             scanf("%s", play);
@@ -289,6 +308,12 @@ int MakeOneScan(Node* node, FILE *skobki)
         node->right = new Node;
         
         tmp_symb = 'A';
+<<<<<<< HEAD
+=======
+        
+        //while (tmp_symb != '{')
+        //    fscanf(skobki, "%c", &tmp_symb);
+>>>>>>> a4b1437ae57fab4ebe1b38fb6b0eb7ea778ff4d0
 
         MakeOneScan(node->right, skobki);
         
