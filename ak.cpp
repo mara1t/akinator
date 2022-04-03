@@ -6,7 +6,7 @@ int ReadBuf(char *buf)
     char c;
     fgets(buf, 20, stdin);
     for (int i = 0; i < 20; i++) {
-        if (buf[i] == '\n') {
+        if (buf[i] == '\n' || buf[i] == '\0') {
             buf[i] = '\0';
             break;
         }
@@ -19,7 +19,7 @@ int MenuToPlay(Node *root)
     while (1) {
         printf("------------\nTo play write-1\nto show characteristics write-2\nto exit write-0\n------------\n");
 
-        char menu_str[30];
+        char menu_str[20];
 
         ReadBuf(menu_str);
 
@@ -29,7 +29,7 @@ int MenuToPlay(Node *root)
         else if (strcmp(menu_str, "2") == 0) {
             printf("Write the word to know more about it\n");
 
-            char str_to_find[30];
+            char str_to_find[20];
             ReadBuf(str_to_find);
 
             Chararcteristic(root, str_to_find);
@@ -54,19 +54,23 @@ int Chararcteristic(Node *root, char *def_str)
     char *tmp_str = new char[20];
     strcpy(tmp_str, def_str);
 
-    
     if (FindElem(root->left, tmp_str) == 0) {
         printf("%s\n", root->data);
     }
     else if (FindElem(root->right, tmp_str) == 0) {
         printf("not %s\n", root->data);
     }
+    else {
+        printf("error\n");
+    }
+
     return 0;
 }
 
 int FindElem(Node *root, char *value) 
 {
     if (root == NULL) {
+
         return -1;
     }
     else if (strcmp(value, root->data) == 0) {
@@ -97,19 +101,12 @@ int MakeAkinator(Node *root)
         
 
     while (node->left != NULL && node->right != NULL) {
-<<<<<<< HEAD
+
         
         char *tmp_ans = new char [30];
         printf("is it %s?\n", node->data);
         
         ReadBuf(tmp_ans);
-=======
-        
-        char *tmp_ans = new char [4];
-        printf("is it %s?\n", node->data);
-        
-        scanf("%s", tmp_ans);
->>>>>>> a52b998e4b4f91b6240539daae2388050ce2bf12
 
         if (strcmp(tmp_ans, "yes") == 0) {
             
@@ -127,25 +124,14 @@ int MakeAkinator(Node *root)
 
     if (node->left == NULL && node->right == NULL) {
     
-<<<<<<< HEAD
         char *tmp_ans = new char [20];
         printf("is it %s?\n", node->data);
 
         ReadBuf(tmp_ans);
-=======
-        char *tmp_ans = new char [4];
-        printf("is it %s?\n", node->data);
-
-        scanf("%s", tmp_ans);
->>>>>>> a52b998e4b4f91b6240539daae2388050ce2bf12
         
         if (strcmp(tmp_ans, "yes") == 0) {
             printf("GOOD GAME!!!\n");
             delete[] tmp_ans;
-<<<<<<< HEAD
-=======
-            //delete[] play;
->>>>>>> a52b998e4b4f91b6240539daae2388050ce2bf12
             return 0;    
         }
         else if (strcmp(tmp_ans, "no") == 0) {
