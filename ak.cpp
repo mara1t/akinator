@@ -1,13 +1,27 @@
 #include "ak.h"
 
+
+int ReadBuf(char *buf)
+{
+    char c;
+    fgets(buf, 20, stdin);
+    for (int i = 0; i < 20; i++) {
+        if (buf[i] == '\n') {
+            buf[i] = '\0';
+            break;
+        }
+    }
+    return 0;
+}
+
 int MenuToPlay(Node *root)
 {
     while (1) {
         printf("------------\nTo play write-1\nto show characteristics write-2\nto exit write-0\n------------\n");
 
-        char menu_str[20];
+        char menu_str[30];
 
-        scanf("%s", menu_str);
+        ReadBuf(menu_str);
 
         if (strcmp(menu_str, "1") == 0) {
             MakeAkinator(root);
@@ -15,8 +29,8 @@ int MenuToPlay(Node *root)
         else if (strcmp(menu_str, "2") == 0) {
             printf("Write the word to know more about it\n");
 
-            char str_to_find[20];
-            scanf("%s", str_to_find);
+            char str_to_find[30];
+            ReadBuf(str_to_find);
 
             Chararcteristic(root, str_to_find);
         }
@@ -83,11 +97,19 @@ int MakeAkinator(Node *root)
         
 
     while (node->left != NULL && node->right != NULL) {
+<<<<<<< HEAD
+        
+        char *tmp_ans = new char [30];
+        printf("is it %s?\n", node->data);
+        
+        ReadBuf(tmp_ans);
+=======
         
         char *tmp_ans = new char [4];
         printf("is it %s?\n", node->data);
         
         scanf("%s", tmp_ans);
+>>>>>>> a52b998e4b4f91b6240539daae2388050ce2bf12
 
         if (strcmp(tmp_ans, "yes") == 0) {
             
@@ -105,15 +127,25 @@ int MakeAkinator(Node *root)
 
     if (node->left == NULL && node->right == NULL) {
     
+<<<<<<< HEAD
+        char *tmp_ans = new char [20];
+        printf("is it %s?\n", node->data);
+
+        ReadBuf(tmp_ans);
+=======
         char *tmp_ans = new char [4];
         printf("is it %s?\n", node->data);
 
         scanf("%s", tmp_ans);
+>>>>>>> a52b998e4b4f91b6240539daae2388050ce2bf12
         
         if (strcmp(tmp_ans, "yes") == 0) {
             printf("GOOD GAME!!!\n");
             delete[] tmp_ans;
+<<<<<<< HEAD
+=======
             //delete[] play;
+>>>>>>> a52b998e4b4f91b6240539daae2388050ce2bf12
             return 0;    
         }
         else if (strcmp(tmp_ans, "no") == 0) {
@@ -140,12 +172,14 @@ int Insert(Node *tmp_root)
     (tmp_root->left)->data = new char [20];
     tmp_root->right = new Node;
     (tmp_root->right)->data = new char [20];
-    scanf("%s", (tmp_root->left)->data);
+
+    ReadBuf((tmp_root->left)->data);
 
     strcpy((tmp_root->right)->data, tmp_root->data);
 
     printf("What's the difference from another?\n");
-    scanf("%s", tmp_root->data);
+    
+    ReadBuf(tmp_root->data);
 
     tmp_root->left->left = NULL;
     tmp_root->left->right = NULL;
