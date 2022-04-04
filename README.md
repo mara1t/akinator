@@ -1,6 +1,7 @@
 # akinator on binary tree  
 
 **ENTRY**:
+    &emsp; write strings below 100 letters 
     
 **Launch**:  
     &emsp; git clone git@github.com:mara1t/akinator.git  
