@@ -30,7 +30,6 @@ int MenuToPlay(Node *root)
             printf("Write the word to know more about it\n");
 
             char str_to_find[100];
-
             ReadBuf(str_to_find);
 
             Chararcteristic(root, str_to_find);
@@ -103,8 +102,8 @@ int MakeAkinator(Node *root)
 
     while (node->left != NULL && node->right != NULL) {
 
+        
         char *tmp_ans = new char [100];
-
         printf("is it %s?\n", node->data);
         
         ReadBuf(tmp_ans);
@@ -124,9 +123,8 @@ int MakeAkinator(Node *root)
     }
 
     if (node->left == NULL && node->right == NULL) {
-
+    
         char *tmp_ans = new char [100];
-
         printf("is it %s?\n", node->data);
 
         ReadBuf(tmp_ans);
