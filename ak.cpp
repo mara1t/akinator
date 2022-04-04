@@ -4,8 +4,8 @@
 int ReadBuf(char *buf)
 {
     char c;
-    fgets(buf, 20, stdin);
-    for (int i = 0; i < 20; i++) {
+    fgets(buf, 100, stdin);
+    for (int i = 0; i < 100; i++) {
         if (buf[i] == '\n' || buf[i] == '\0') {
             buf[i] = '\0';
             break;
@@ -19,7 +19,7 @@ int MenuToPlay(Node *root)
     while (1) {
         printf("------------\nTo play write-1\nto show characteristics write-2\nto exit write-0\n------------\n");
 
-        char menu_str[20];
+        char menu_str[100];
 
         ReadBuf(menu_str);
 
@@ -29,7 +29,8 @@ int MenuToPlay(Node *root)
         else if (strcmp(menu_str, "2") == 0) {
             printf("Write the word to know more about it\n");
 
-            char str_to_find[20];
+            char str_to_find[100];
+
             ReadBuf(str_to_find);
 
             Chararcteristic(root, str_to_find);
@@ -51,7 +52,7 @@ int MenuToPlay(Node *root)
 
 int Chararcteristic(Node *root, char *def_str)
 {
-    char *tmp_str = new char[20];
+    char *tmp_str = new char[100];
     strcpy(tmp_str, def_str);
 
     if (FindElem(root->left, tmp_str) == 0) {
@@ -102,8 +103,8 @@ int MakeAkinator(Node *root)
 
     while (node->left != NULL && node->right != NULL) {
 
-        
-        char *tmp_ans = new char [30];
+        char *tmp_ans = new char [100];
+
         printf("is it %s?\n", node->data);
         
         ReadBuf(tmp_ans);
@@ -123,8 +124,9 @@ int MakeAkinator(Node *root)
     }
 
     if (node->left == NULL && node->right == NULL) {
-    
-        char *tmp_ans = new char [20];
+
+        char *tmp_ans = new char [100];
+
         printf("is it %s?\n", node->data);
 
         ReadBuf(tmp_ans);
